@@ -1,0 +1,120 @@
+<div class="col-sm-6">
+	<form class="form-horizontal" id="flightSearchForm" ng-submit="searchFlights()" role="form">
+	  <div class="form-group">
+	    <label class="control-label col-sm-2" for="email">From:</label>
+	    <div class="col-sm-8">
+		    <select ng-model="from_location" class="from_location form-control" required>
+		    <option value="">Please select</option>
+		    <optgroup label="Select your desired departure">
+				<option value="Delhi">Delhi</option>
+				<option value="Mumbai">Mumbai</option>
+				<option value="Jaipur">Jaipur</option>
+				<option value="Kolkata">Kolkata</option>
+				<option value="Nagpur">Nagpur</option>
+				<option value="Surat">Surat</option>
+				<option value="Srinagar">Srinagar</option>
+				<option value="Amritsar">Amritsar</option>
+				<option value="Goa">Goa</option>
+				<option value="Bangalore">Bangalore</option>
+				<option value="Hyderabad">Hyderabad</option>
+				<option value="Chennai">Chennai</option>
+			</optgroup>
+			</select>
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label class="control-label col-sm-2" for="pwd">To:</label>
+	    <div class="col-sm-8"> 
+  		    <select ng-model="to_location" class="to_location form-control" required>
+		    <option value="">Please select</option>
+		    <optgroup label="Select your desired arrival">
+				<option value="Delhi">Delhi</option>
+				<option value="Mumbai">Mumbai</option>
+				<option value="Jaipur">Jaipur</option>
+				<option value="Kolkata">Kolkata</option>
+				<option value="Nagpur">Nagpur</option>
+				<option value="Surat">Surat</option>
+				<option value="Srinagar">Srinagar</option>
+				<option value="Amritsar">Amritsar</option>
+				<option value="Goa">Goa</option>
+				<option value="Bangalore">Bangalore</option>
+				<option value="Hyderabad">Hyderabad</option>
+				<option value="Chennai">Chennai</option>
+			</optgroup>
+			</select>
+	    </div>
+	  </div>
+	  <div class="form-group"> 
+	    <div class="col-sm-offset-2 col-sm-10">
+	      <div class="">
+	        
+	      </div>
+	    </div>
+	  </div>
+	  <div class="form-group"> 
+	    <div class="col-sm-offset-2 col-sm-10">
+	      <button type="submit" class="btn btn-default">Search Flights</button>
+	    </div>
+	  </div>
+	</form>
+</div>
+
+<div class="Flights">
+	<div ng-repeat="flight in flights" class="panel panel-primary" >
+		<div class="panel-heading">
+			<label class="control-label col-sm-4">Airline:</label>
+			<div class="col-sm-8">
+				{{flight.airline_name}}
+			</div>
+		</div>
+		<div class="panel-body">
+			<label class="control-label col-sm-4">From:</label>
+			<div class="col-sm-8"> 
+				{{flight.from_location}}
+			</div>
+		</div>
+		<div class="panel-body"> 
+			<label class="control-label col-sm-4">To:</label>
+			<div class="col-sm-8">
+				{{flight.to_location}}
+			</div>
+		</div>
+		<div class="panel-body"> 
+			<label class="control-label col-sm-4">Departure Time:</label>
+			<div class="col-sm-8">
+				{{flight.departure_time}}
+			</div>
+		</div>
+		<div class="panel-body"> 
+			<label class="control-label col-sm-4">Arrival Time:</label>
+			<div class="col-sm-8">
+				{{flight.arrival_time}}
+			</div>
+		</div>
+		<div class="panel-body"> 
+			<label class="control-label col-sm-4">Price:</label>
+			<div class="col-sm-8">
+				{{flight.price}}
+			</div>
+		</div>
+		<div class="panel-body"> 
+			<label class="control-label col-sm-4">Duration:</label>
+			<div class="col-sm-4">
+				{{flight.duration}}
+			</div>
+			<div class="col-sm-4">
+				<a ng-click="bookFlights(flight)" class="btn btn-success">Book</a>
+			</div>
+		</div>
+	</div>
+</div>
+<span class="nof" ng-show="flights.length">{{flights.length}} flights found.</span>
+<span class="nof" ng-show="flights.length == 0">No flights found.</span>
+<link rel="stylesheet" href="css/select2.min.css" />
+<script src="js/select2.min.js"></script>
+<script type="text/javascript">
+	$('nof').hide();
+    $( "#flightSearchForm" ).submit(function( event ) {
+        $('nof').fadeIn('slow');
+    });
+</script>

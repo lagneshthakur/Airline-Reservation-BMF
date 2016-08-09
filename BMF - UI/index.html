@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app="BasicHttpAuthExample">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>BMF-Home</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/logo-nav.css" />
+    <link rel="stylesheet" href="css/hover.css" />
+    <script src="js/jquery-1.12.1.js"></script>
+    <script src="js/bootstrap.js"></script>
+  </head>
+
+  <body >
+
+     <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" aria-expanded="false">
+                <ul class="nav bg_img">
+                    <li>
+                    <a class="navbar brand" href="#">
+                        <img src="images/logo.png" height="50px" alt="">
+                    </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li>
+                    <a class="hvr-shutter-out-vertical home_btn" ng-show="globals.currentUser" href="#/"> Home </a>
+                    </li>
+                    <li>
+                        <a class="hvr-shutter-out-vertical home_btn" href="#/aboutus">About</a>
+                    </li>
+                    <li>
+                        <a class="hvr-shutter-out-vertical home_btn" ng-show="globals.currentUser" href="#/flightSearch">Search Flight</a>
+                    </li>
+                    <li>
+                        <a class="hvr-shutter-out-vertical home_btn" ng-show="globals.currentUser.username.toLowerCase() == 'admin@bmf.com'" href="#/flightManage">Manage Flights</a>
+                    </li>
+                    <li>
+                      <a class="hvr-shutter-out-vertical home_btn" ng-show="!globals.currentUser" href="#/login"> Home </a>
+                    </li>
+                    <li>
+                        <a class="hvr-shutter-out-vertical home_btn" ng-show="globals.currentUser" href="#/login">Logout</a>
+                    </li>
+                    <!-- <li>
+                        <a ng-show="!globals.currentUser" class="btn" data-toggle="modal" data-target="#loginModal">
+                        <button class="hvr-shutter-out-vertical home_btn">Connect With Us <span class="glyphicon glyphicon-log-in"></span></button>
+                        </a>   
+                    </li> -->
+                </ul>
+            <a class= "hvr-shutter-out-vertical home_btn"ng-show="globals.currentUser">Welcome {{globals.currentUser.username}} ! </a>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <img class="background" src="images/Commercial-Airplane-HD-Background-Wallpapers.jpg" alt="">
+    <div class="jumbotron">
+      <div class="container" style="position:relative;padding-top: 20px;">
+          <div ng-view></div>
+    </div>
+
+    <div class="credits text-center">
+      <p>
+      </p>
+    </div>
+
+
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/angular-cookies.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="modules/authentication/services.js"></script>
+    <script src="modules/authentication/controllers.js"></script>
+    <script src="modules/home/controllers.js"></script>
+    <script src="modules/flight/controllers.js"></script>
+    <script src="modules/payment/controllers.js"></script>
+
+  </body>
+
+</html>

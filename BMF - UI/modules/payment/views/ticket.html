@@ -1,0 +1,94 @@
+<div class="row">
+<div id="ticketdiv" class="col-md-offset-2 col-md-8 ticket">
+	<div class="row header">
+		<div class="col-md-6">
+			<p>BookMyFlight<p>
+			<p id="date">Booking Date : <p>
+		</div>
+		<div class="col-md-6">
+			<p class="right">This is not your ticket.</p>
+			<p class="right">Exchange this at the airline kiosk to get your ticket</p>
+		</div>
+	</div>
+	<div class="row body">
+		<div class="row">
+			<div class="col-md-6 msg">
+			<p>Dear Customer,</p>
+			<p>Your seat(s) are confirmed.</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 msg">
+				<table class="table table-bordered">
+				    <thead>
+				      <tr>
+				        <th>Airline</th>
+				        <th>Departure</th>
+				        <th>Arrival</th>
+				        <th>Duration</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				      <tr>
+				        <td rowspan="2">{{flight.airline_name}}</td>
+				        <td rowspan="1">{{flight.from_location}}</td>
+				        <td rowspan="1">{{flight.to_location}}</td>
+				        <td rowspan="2">{{flight.duration}}</td>
+				      </tr>
+				      <tr>
+				        <td rowspan="1">{{flight.departure_time}}</td>
+				        <td rowspan="1">{{flight.arrival_time}}</td>
+				      </tr>
+				    </tbody>
+				</table>
+			</div>
+		</div>
+		<div class="col-md-6 msg">
+			<p>Seat Number : {{seats}}</p>
+			<p>Total : {{total}}</p>
+		</div>
+		<div class="col-md-6 msg">
+			<p> Booked by : {{username}}</p>
+		</div>
+	</div>
+	<div class="row footer">
+		<p>A printed copy of this e-ticket must be presented at the time of check in.</p>
+		<p>We recommend you to report at the check-in counter at least 2 hours prior to the departure time.</p>
+	</div>
+</div>
+</div>
+<div class="row">
+	<div class="col-md-offset-5 col-md-2">
+		<input type="button" value="Print Ticket" onclick="PrintElem('#ticketdiv')" /><span class="glyphicon glyphicon-print">
+	</div>
+</div>
+			
+
+
+<script type="text/javascript" charset="utf-8" >
+	$(document).ready(function(){
+		var date=new Date();
+		$("#date").append("<strong>"+date+"</strong>");
+	});
+	function PrintElem(elem)
+    {
+        Popup($(elem).html());
+    }
+    function Popup(data) 
+    {
+        var mywindow = window.open('', 'BMF-Ticket', 'height=500,width=800');
+        mywindow.document.write('<html><head><title>BMF - Ticket</title>');
+        /*optional stylesheet*/ //mywindow.document.write('<link rel="stylesheet" href="main.css" type="text/css" />');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write(data);
+        mywindow.document.write('</body></html>');
+
+        mywindow.document.close(); // necessary for IE >= 10
+        mywindow.focus(); // necessary for IE >= 10
+
+        mywindow.print();
+        mywindow.close();
+
+        return true;
+    }
+</script>

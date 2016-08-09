@@ -1,0 +1,109 @@
+<form id="flightBookForm" role="form" ng-submit="bookSeat()">
+    <div class="col-md-8">
+        <div class="container">
+            <div id="seat-map">
+                <div class="front-indicator">Front</div>
+                
+            </div>
+            <div class="booking-details">
+                <h2>Booking Details</h2>
+                
+                <h3> Selected Seats (<span id="counter">0</span>):</h3>
+                <ul id="selected-seats"></ul>
+                
+                Total: <b>Rs.<span id="total">0</span></b>
+                
+                <input type="submit" value="Checkout &raquo;" class="checkout-button" id="checkout">
+                <input name="seatinput" ng-model="seats" type="text" style="display:none;" />
+                <div id="legend"></div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="col-md-4">
+    <h2>Flight Details</h2>
+    <div class="text-center bg-primary">
+        <label class="control-label col-sm-4">Passenger:</label><div class="col-sm-8">{{globals.currentUser.username}}</div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+        <label class="control-label col-sm-4">Airline:</label>
+            <div class="col-sm-8">
+                {{flight.airline_name}}
+            </div>
+        </div>
+        <div class="panel-body">
+            <label class="control-label col-sm-4">From:</label>
+            <div class="col-sm-8"> 
+                {{flight.from_location}}
+            </div>
+        </div>
+        <div class="panel-body"> 
+            <label class="control-label col-sm-4">To:</label>
+            <div class="col-sm-8">
+                {{flight.to_location}}
+            </div>
+        </div>
+        <div class="panel-body"> 
+            <label class="control-label col-sm-4">Departure Time:</label>
+            <div class="col-sm-8">
+                {{flight.departure_time}}
+            </div>
+        </div>
+        <div class="panel-body"> 
+            <label class="control-label col-sm-4">Arrival Time:</label>
+            <div class="col-sm-8">
+                {{flight.arrival_time}}
+            </div>
+        </div>
+        <div class="panel-body"> 
+            <label class="control-label col-sm-4">Duration:</label>
+            <div class="col-sm-4">
+                {{flight.duration}}
+            </div>
+        </div>
+        <div class="panel-body"> 
+            <label class="control-label col-sm-4">Price:</label>
+            <div class="col-sm-4">
+                {{flight.price}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/seatchart/jquery.seat-charts.js"></script>
+<script type="text/javascript" src="js/seatchart/call.js"></script>
+<link rel="stylesheet" href="css/seatchart/jquery.seat-charts.css">
+<link rel="stylesheet" href="css/seatchart/style.css">
+<link rel="stylesheet" href="css/seatchart/csslatin.css">
+
+<script type="text/javascript" charset="utf-8">
+
+    $('#checkout').click(function(evt){
+        var seatString = $('.booking-details > ul > li').text();
+        var seat="";
+        if(seatString=="")
+        {
+          alert("Please select a seat.");
+          evt.preventDefault();
+          return false;
+        }
+        seatArray=seatString.split("Rs.");
+        l = seatArray.length;
+        for(i=0;i<l-1;i++)
+        {
+          t1 = seatArray[i].slice(-4);
+          t2 = t1.slice(0,2);
+          seat=seat.concat(t2);
+          seat=seat.concat(" ");
+        }
+        seatArray=seat.split(" ");
+        seatArray = seatArray.filter(function(str) {
+            return /\S/.test(str);
+        });
+        var input = $( "input[name='seatinput']" );
+        input.val(seatArray);
+        input.trigger('input');
+    });
+    
+</script>

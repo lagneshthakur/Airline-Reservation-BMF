@@ -1,0 +1,167 @@
+<h2 id="" class="mainText text-center">
+    Welcome to <br> Book My Flight!
+</h2>
+
+
+<!-- Start WOWSlider.com BODY section -->
+<div id="wowslider-container1" class="row">
+<div class="ws_images"><ul>
+        <li><img src="images/destinations/bookmyflight.jpg" alt="BookMyFlight" title="BookMyFlight" id="wows1_0"/></li>
+        <li><img src="images/destinations/venice.jpg" alt="Venice" title="Venice" id="wows1_1"/></li>
+        <li><img src="images/destinations/colosseum.jpg" alt="Colosseum" title="Colosseum" id="wows1_2"/></li>
+        <li><img src="images/destinations/eiffel_tower.jpg" alt="Eiffel Tower" title="Eiffel Tower" id="wows1_3"/></li>
+        <li><img src="images/destinations/machu_picchu.jpg" alt="Machu Picchu" title="Machu Picchu" id="wows1_4"/></li>
+        <li><img src="images/destinations/opera_house.jpg" alt="Opera House" title="Opera House" id="wows1_5"/></li>
+        <li><img src="images/destinations/pyramids.jpg" alt="Pyramids" title="Pyramids" id="wows1_6"/></li>
+        <li><img src="images/destinations/statue_of_liberty.jpg" alt="Statue of Liberty" title="Statue of Liberty" id="wows1_7"/></li>
+        <li><img src="images/destinations/taj_mahal.jpg" alt="Taj Mahal" title="Taj Mahal" id="wows1_8"/></li>
+        <li><a href="http://wowslider.com"><img src="images/destinations/goa.jpg" alt="bootstrap carousel" title="Goa" id="wows1_9"/></a></li>
+        <li><img src="images/destinations/hong_kong.jpg" alt="Hong Kong" title="Hong Kong" id="wows1_10"/></li>
+    </ul></div>
+    <div class="ws_bullets"><div>
+        <a href="#" title="BookMyFlight"><span><img src="images/tooltips/bookmyflight.jpg" alt="BookMyFlight"/>1</span></a>
+        <a href="#" title="Venice"><span><img src="images/tooltips/venice.jpg" alt="Venice"/>2</span></a>
+        <a href="#" title="Colosseum"><span><img src="images/tooltips/colosseum.jpg" alt="Colosseum"/>3</span></a>
+        <a href="#" title="Eiffel Tower"><span><img src="images/tooltips/eiffel_tower.jpg" alt="Eiffel Tower"/>4</span></a>
+        <a href="#" title="Machu Picchu"><span><img src="images/tooltips/machu_picchu.jpg" alt="Machu Picchu"/>5</span></a>
+        <a href="#" title="Opera House"><span><img src="images/tooltips/opera_house.jpg" alt="Opera House"/>6</span></a>
+        <a href="#" title="Pyramids"><span><img src="images/tooltips/pyramids.jpg" alt="Pyramids"/>7</span></a>
+        <a href="#" title="Statue of Liberty"><span><img src="images/tooltips/statue_of_liberty.jpg" alt="Statue of Liberty"/>8</span></a>
+        <a href="#" title="Taj Mahal"><span><img src="images/tooltips/taj_mahal.jpg" alt="Taj Mahal"/>9</span></a>
+        <a href="#" title="Goa"><span><img src="images/tooltips/goa.jpg" alt="Goa"/>10</span></a>
+        <a href="#" title="Hong Kong"><span><img src="images/tooltips/hong_kong.jpg" alt="Hong Kong"/>11</span></a>
+    </div></div><div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.com">http://wowslider.com/</a> by WOWSlider.com v8.7</div>
+<div class="ws_shadow"></div>
+</div> 
+<!-- End WOWSlider.com BODY <section></section>ion -->
+
+
+
+
+<!-- the home template ends -->
+<div class="row">
+    <div align="center"  class="col-md-offset-4 col-md-4">
+        <a ng-show="!globals.currentUser" class="btn" data-toggle="modal" data-target="#loginModal">
+        <button class="btn btn-info">Connect With Us <span class="glyphicon glyphicon-log-in"></span></button>
+        </a>   
+    </div> 
+</div>
+
+
+<!-- -Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content login-modal">
+            <div class="modal-header login-modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title text-center" id="loginModalLabel">USER AUTHENTICATION</h4>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <div role="tabpanel" class="login-tab">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a id="signin-taba" href="#home" aria-controls="home" role="tab" data-toggle="tab">Sign In</a></li>
+                            <li role="presentation"><a id="signup-taba" href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Sign Up</a></li>
+                            <li role="presentation"><a id="forgetpass-taba" href="#forget_password" aria-controls="forget_password" role="tab" data-toggle="tab">Forget Password</a></li>
+                        </ul>
+                    
+                        <!-- Tab panes -->
+                        <!-- Login Form -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active text-center" id="home">
+                                &nbsp;&nbsp;
+                                <div class="clearfix"></div>
+                                <form ng-submit="login()" id="login_form" class="modal-forms">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                            <input type="text" name="username" id="username" class="form-control" ng-model="username" required />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                            <input type="password" name="password" id="password" class="form-control" ng-model="password" required />
+                                        </div>
+                                    </div>
+                                    <button id="modal_login" type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-block btn-info" data-loading-text="Signing In....">Login <span class="glyphicon glyphicon-log-in"></span></button>
+                                    <span id="login_fail" class="response_error">{{login_error}}</span>
+                                    <img width="64px" height="64px" ng-if="dataLoading" src="images/loading.gif"/>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+
+                            <!-- Registration Form -->
+                            <div role="tabpanel" class="tab-pane" id="profile">
+                                &nbsp;&nbsp;
+                                <div class="clearfix"></div>
+                                <form ng-submit="register()" id="register_form" class="modal-forms">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa"></i></div>
+                                            <input type="text" class="form-control" id="firstname" placeholder="FirstName" name="firstname" ng-model="firstname" required>
+                                        </div>
+                                        <span class="help-block has-error" data-error='0' id="firstname-error"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa"></i></div>
+                                            <input type="text" class="form-control" id="lastname" placeholder="LastName" name="lastname" ng-model="lastname">
+                                        </div>
+                                        <span class="help-block has-error" data-error='0' id="lastname-error"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-at"></i></div>
+                                            <input type="email" class="form-control" id="email" placeholder="Email" name="email" ng-model="email" required>
+                                        </div>
+                                        <span class="help-block has-error" data-error='0' id="remail-error"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                            <input type="password" class="form-control" id="password" placeholder="Password" name="password" ng-model="password" required>
+                                        </div>
+                                        <span class="help-block has-error" data-error='0' id="password-error"></span>
+                                    </div>
+                                    <button type="submit" id="register_btn" class="btn btn-block btn-info" data-loading-text="Registering....">Register <span class="glyphicon glyphicon-pencil"></span></button>
+                                    <span id="register_msg" class="response_error">{{register_msg}}</span>
+                                    <img width="64px" height="64px" ng-if="dataLoading" src="images/loading.gif"/>
+                                    <div class="clearfix"></div>
+                                    
+                                </form>
+                            </div>
+                            <!-- Forget Password Form -->
+                            <div role="tabpanel" class="tab-pane text-center" id="forget_password">
+                                &nbsp;&nbsp;
+                                    <div class="clearfix"></div>
+                                    <form ng-submit="recoverPassword()" id="password_form" class="modal-forms">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                                <input type="text" ng-model="email" class="form-control" id="femail" required placeholder="Email">
+                                            </div>
+                                            <span class="help-block has-error" data-error='0' id="femail-error"></span>
+                                        </div>
+                                        
+                                        <button type="submit"class="btn btn-block btn-info" data-loading-text="Please wait....">Send Password <span class="glyphicon glyphicon-envelope"></span></button>
+                                        <span id="password_msg" class="response_error">{{password_msg}}</span>
+                                        <img width="64px" height="64px" ng-if="dataLoading" src="images/loading.gif"/>
+                                        <div class="clearfix"></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>              
+                    </div>
+                </div>
+                
+            </div>
+       </div>
+    </div>
+    <!-- - Login Model Ends Here -->
+    <link rel="stylesheet" href="css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="css/login-modal.css"/>
+<link rel="stylesheet" type="text/css" href="css/wow/style.css" />
+<script type="text/javascript" src="js/wow/wowslider.js"></script>
+<script type="text/javascript" src="js/wow/script.js"></script>

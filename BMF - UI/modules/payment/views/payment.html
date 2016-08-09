@@ -1,0 +1,146 @@
+<!-- Creditcard.js v0.10.13 | Copyright (c) 2016 Creditcard.js | creditcardjs.com/licensing -->
+<link href="css/creditcardjs-v0.10.13.min.css" rel="stylesheet">
+<form ng-submit="bookSeats(flight, seats, username)" method="get" accept-charset="utf-8">
+<div class="col-md-4 ccjs-card">
+  <label class="ccjs-number">
+    Card Number
+    <input name="card-number" class="ccjs-number" placeholder="•••• •••• •••• ••••">
+  </label>
+
+  <label class="ccjs-csc">
+    Security Code
+    <input name="csc" class="ccjs-csc" placeholder="•••">
+  </label>
+
+  <button type="button" class="ccjs-csc-help">?</button>
+
+  <label class="ccjs-name">
+    Name on Card
+    <input name="name" class="ccjs-name">
+  </label>
+
+  <fieldset class="ccjs-expiration">
+    <legend>Expiration</legend>
+    <select name="month" class="ccjs-month">
+      <option selected disabled>MM</option>
+      <option value="01">01</option>
+      <option value="02">02</option>
+      <option value="03">03</option>
+      <option value="04">04</option>
+      <option value="05">05</option>
+      <option value="06">06</option>
+      <option value="07">07</option>
+      <option value="08">08</option>
+      <option value="09">09</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+    </select>
+
+    <select name="year" class="ccjs-year">
+      <option selected disabled>YY</option>
+      <option value="14">14</option>
+      <option value="15">15</option>
+      <option value="16">16</option>
+      <option value="17">17</option>
+      <option value="18">18</option>
+      <option value="19">19</option>
+      <option value="20">20</option>
+      <option value="21">21</option>
+      <option value="22">22</option>
+      <option value="23">23</option>
+      <option value="24">24</option>
+    </select>
+  </fieldset>
+<input id="paymentbtn" type="submit" class="ccjs-number" value="Make Payment">
+
+  <select name="card-type" class="ccjs-hidden-card-type">
+    <option value="amex" class="ccjs-amex">American Express</option>
+    <option value="discover" class="ccjs-discover">Discover</option>
+    <option value="mastercard" class="ccjs-mastercard">MasterCard</option>
+    <option value="visa" class="ccjs-visa">Visa</option>
+    <option value="diners-club" class="ccjs-diners-club">Diners Club</option>
+    <option value="jcb" class="ccjs-jcb">JCB</option>
+    <!--<option value="laser" class="laser">Laser</option>-->
+    <!--<option value="maestro" class="maestro">Maestro</option>-->
+    <!--<option value="unionpay" class="unionpay">UnionPay</option>-->
+    <!--<option value="visa-electron" class="visa-electron">Visa Electron</option>-->
+    <!--<option value="dankort" class="dankort">Dankort</option>-->
+  </select>
+</div>
+</form>
+<!-- Flight and Seat details -->
+
+<div class="col-md-offset-1 col-md-5">
+    <div class="text-center bg-primary">
+        <label class="control-label col-sm-4">Passenger:</label><div class="col-sm-8">{{globals.currentUser.username}}</div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+        <label class="control-label col-sm-4">Airline:</label>
+            <div class="col-sm-8">
+                {{flight.airline_name}}
+            </div>
+        </div>
+        <div class="panel-body">
+            <label class="control-label col-sm-4">From:</label>
+            <div class="col-sm-8"> 
+                {{flight.from_location}}
+            </div>
+        </div>
+        <div class="panel-body"> 
+            <label class="control-label col-sm-4">To:</label>
+            <div class="col-sm-8">
+                {{flight.to_location}}
+            </div>
+        </div>
+        <div class="panel-body"> 
+            <label class="control-label col-sm-4">Departure Time:</label>
+            <div class="col-sm-8">
+                {{flight.departure_time}}
+            </div>
+        </div>
+        <div class="panel-body"> 
+            <label class="control-label col-sm-4">Arrival Time:</label>
+            <div class="col-sm-8">
+                {{flight.arrival_time}}
+            </div>
+        </div>
+        <div class="panel-body"> 
+            <label class="control-label col-sm-4">Duration:</label>
+            <div class="col-sm-4">
+                {{flight.duration}}
+            </div>
+        </div>
+        <div class="panel-body"> 
+            <label class="control-label col-sm-4">Total:</label>
+            <div class="col-sm-4">
+                {{total}}
+            </div>
+        </div>
+        <div class="panel-body"> 
+            <label class="control-label col-sm-4">Seats:</label>
+            <div class="col-sm-4">
+                {{seats}}
+            </div>
+        </div>     
+    </div>
+</div>
+
+
+<script src="js/creditcardjs-v0.10.13.min.js"></script>
+<script type="text/javascript" charset="utf-8" >
+  $('#paymentbtn').click(function(evt){
+    if(!creditcardjs.isValid())
+    {
+      alert("The Credit Card details are invalid");
+      evt.preventDefault();
+      return false;
+    }
+    else
+    {
+      alert("Thank for using BookMyFlight\n Please carry your E-ticket with you");
+      return true;
+    }
+  });
+</script>
